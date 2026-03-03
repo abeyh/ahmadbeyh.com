@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery – Ahmad Beyh</title>
+  <meta name="description" content="Photography gallery by Ahmad Beyh – landscapes, long exposures, and cityscapes.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a class="site-name" href="index.html">Ahmad Beyh</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Ahmad_Beyh_CV.pdf" target="_blank" rel="noopener">CV</a></li>
+      <li><a href="https://scholar.google.com/citations?user=QHtQO2gAAAAJ" target="_blank" rel="noopener">Publications</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <h2 class="gallery-header">Gallery</h2>
+    <div class="gallery-grid">
+      <img src="images/AB_20151101_5483_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20151101_5514_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20170704_7666-Edit_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20170705_7900_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20170705_7965M_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20170706_8019_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20171119_9139_M_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20171119_9149_Blended_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20171119_9266_Blended_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20171226_9404-Edit_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20171228_9444_M_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180103_9581_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180121_0004_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180126_0211_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180126_0351_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180126_0389_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180707_0774_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180928_2291_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180928_2522_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20180929_2544_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20181014_2893_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20181014_2909_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20181014_2921_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20191229_0530-Pano_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20200425_0701_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20200425_0701_TAURUS_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20200524_0938_Mean_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20200613_1008-HDR_Mean_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20200613_1024_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20200718_1392_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_20200815_1770_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+      <img src="images/AB_DSC_9452_L1200px_preview.jpg" alt="Photograph by Ahmad Beyh" loading="lazy">
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer>&copy; <script>document.write(new Date().getFullYear())</script> Ahmad Beyh</footer>
+
+  <script>
+    document.querySelectorAll('.gallery-grid img').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox').classList.add('open');
+      });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>
