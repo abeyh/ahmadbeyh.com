@@ -1,0 +1,352 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0e0e0e;
+  --bg-alt: #161616;
+  --text: #d6d1cb;
+  --text-muted: #8a8580;
+  --accent: #d2b378;
+  --font-body: 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --max-width: 860px;
+  --nav-height: 56px;
+}
+
+html {
+  font-size: 20px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.75;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Navigation ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  background: var(--bg-alt);
+  border-bottom: 1px solid #1e1e1e;
+}
+
+nav .site-name {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+nav .nav-links a {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active {
+  color: var(--text);
+  opacity: 1;
+}
+
+/* Mobile hamburger */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-muted);
+  margin: 5px 0;
+  transition: 0.25s;
+}
+
+@media (max-width: 640px) {
+  .nav-toggle { display: block; }
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--bg-alt);
+    border-bottom: 1px solid #1e1e1e;
+    padding: 1rem clamp(1.25rem, 4vw, 3rem);
+    gap: 0.75rem;
+  }
+  nav .nav-links.open { display: flex; }
+}
+
+/* ── Page Wrapper ── */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3.5rem clamp(1.25rem, 4vw, 3rem) 5rem;
+}
+
+/* ── Home ── */
+.home-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.75rem;
+}
+
+.portrait {
+  width: 240px;
+  border-radius: 4px;
+  filter: grayscale(10%);
+}
+
+.bio h1 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.bio .subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.bio p {
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  text-align: justify;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bio p:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+.social-row {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+.social-row a {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.social-row a:hover {
+  color: var(--text);
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .portrait {
+    width: 160px;
+  }
+  .social-row { justify-content: center; }
+}
+
+/* ── Gallery ── */
+.page--gallery {
+  max-width: 1100px;
+}
+
+.gallery-header {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.gallery-grid {
+  columns: 3;
+  column-gap: 0.75rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.25s, transform 0.25s;
+  opacity: 0;
+  transform: translateY(12px);
+}
+.gallery-grid img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery-grid img.visible:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .gallery-grid { columns: 2; }
+}
+@media (max-width: 640px) {
+  .gallery-grid { columns: 1; }
+}
+
+/* ── Lightbox ── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.92);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open {
+  display: flex;
+}
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 2px;
+  transition: opacity 0.3s ease;
+}
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  z-index: 201;
+  transition: color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  color: #fff;
+}
+.lightbox-close {
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+}
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3.5rem;
+}
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+
+.page--wide {
+  max-width: 1200px;
+}
+
+/* ── CV ── */
+.cv-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cv-embed {
+  width: 100%;
+  height: 80vh;
+  border: none;
+  border-radius: 3px;
+}
+
+/* ── Contact ── */
+.page--contact {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--nav-height) - 6rem);
+}
+
+.contact-layout {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-header {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+
+.contact-email {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.contact-socials {
+  margin-top: 0.5rem;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 2rem 1rem 2.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
